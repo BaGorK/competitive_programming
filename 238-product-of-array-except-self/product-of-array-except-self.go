@@ -5,11 +5,10 @@ func productExceptSelf(nums []int) []int {
         res[i] = 1
     }
 
-    prefix := 1
-    for i := 0; i < n; i++ {
-        res[i] = prefix
-        prefix *= nums[i]
+    for i := 1; i < n; i++ {
+        res[i] = res[i - 1] * nums[i - 1]
     }
+
     postfix := 1;
     for i := len(nums) - 1; i >= 0; i-- {
         res[i] *= postfix;
